@@ -19,8 +19,8 @@ function onSubmitForm(evt) {
     localStorage.removeItem(STORAGE_KEY);
     formData = {};
 }
-function onInputForm(evt) {
-    formData(e.target.name) = e.target.value;
+function onInputForm(e) {
+    formData[e.target.name] = e.target.value;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
 
@@ -29,6 +29,6 @@ function populateInputForm() {
     if (parsedData) {
         const formKeys = JSON.parse(parsedData);
         if (formKeys.email !== undefined) input.value = formKeys.email;
-        if (formKeys.message !== undefined) text.value = formKeys.message;
+      if (formKeys.message !== undefined) text.value = formKeys.message;
     }
 }
