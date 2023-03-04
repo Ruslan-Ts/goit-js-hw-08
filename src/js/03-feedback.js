@@ -21,14 +21,20 @@ function onSubmitForm(evt) {
 }
 function onInputForm(e) {
     formData[e.target.name] = e.target.value;
+    console.log(e.target.value);
+
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+
+    console.log(formData);
 }
 
 function populateInputForm() {
-    const parsedData = localStorage.getItem(STORAGE_KEY);
+    const parsedData = localStorage.getItem(STORAGE_KEY, JSON.stringify(formData));
+    const formKeys = JSON.parse(parsedData);
+    console.log(`parsedData${parsedData}`);
+    console.log(`formKeys${formKeys}`);
     if (parsedData) {
-        const formKeys = JSON.parse(parsedData);
         if (formKeys.email !== undefined) input.value = formKeys.email;
-      if (formKeys.message !== undefined) text.value = formKeys.message;
+        if (formKeys.message !== undefined) text.value = formKeys.message;
     }
 }
